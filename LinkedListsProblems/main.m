@@ -223,7 +223,7 @@ void mergeSort(struct node **headReference)
 
 // add numbers from 2 linked lists
 
-struct node* addNumbersFromLinkedList(struct node* first, struct node* second)
+struct node* addNumbersFromLinkedList(NODE first, NODE second)
 {
     NODE result = NULL;
     NODE previous = NULL, temp = NULL;
