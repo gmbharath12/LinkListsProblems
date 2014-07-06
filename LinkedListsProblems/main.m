@@ -290,6 +290,24 @@ struct node* addNumbersFromLinkedList(NODE first, NODE second)
     return result;
 }
 
+//reverses a linked list
+void reverse(NODE head)
+{
+    NODE previous = NULL;
+    NODE current = head;
+    NODE temp;
+    
+    while (current != NULL)
+    {
+        temp = current->next;
+        current->next = previous;
+        previous = current;
+        current = temp;
+    }
+    printLinkList(previous);
+}
+
+
 int main(int argc, const char * argv[])
 {
     
@@ -353,6 +371,12 @@ int main(int argc, const char * argv[])
         res = addNumbersFromLinkedList(first, second);
         printf("\n Resultant list (after addition) is ");
         printLinkList(res);
+        
+        printf("\n");
+        
+        printf("\n Reverse linked list : ");
+        reverse(a);
+
     }
     return 0;
 }
