@@ -148,7 +148,6 @@ void getNthNode(struct node* head, int n)
 //splits linked list into two halves.
 //If the length is odd, the extra node should go in the front list.
 //Uses the fast/slow pointer strategy
-
 void fronAndBackSplit(struct node* head, struct node** frontReference, struct node** backReference)
 {
     struct node* source = head;
@@ -222,7 +221,6 @@ void mergeSort(struct node **headReference)
 
 
 // add numbers from 2 linked lists
-
 struct node* addNumbersFromLinkedList(NODE first, NODE second)
 {
     NODE result = NULL;
