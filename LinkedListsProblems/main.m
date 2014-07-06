@@ -43,7 +43,7 @@ void printLinkList(struct node* head)
     {
         while (head != NULL)
         {
-            printf("\n %d----->",head->data);
+            printf("\n † %d ",head->data);
             head = head->next;
         }
     }
@@ -138,7 +138,9 @@ void getNthNode(struct node* head, int n)
         p2 = p2->next;
         p1 = p1->next;
     }
+    printf("\n");
     printf(" \n  Node no. %d from last is %d ",n, p1->data);
+    printf("\n");
     printLinkList(p1);
     
 }
@@ -219,6 +221,77 @@ void mergeSort(struct node **headReference)
 }
 
 
+// add numbers from 2 linked lists
+
+struct node* addNumbersFromLinkedList(struct node* first, struct node* second)
+{
+    NODE result = NULL;
+    NODE previous = NULL, temp = NULL;
+    int sum = 0, carry = 0, a, b;
+    while (first != NULL || second != NULL)
+    {
+        if (first)
+        {
+            a = first->data;
+        }
+        else
+        {
+            a = 0;
+        }
+        if (second)
+        {
+            b = second->data;
+        }
+        else
+        {
+            b = 0;
+        }
+        sum = carry + a + b;
+        if (sum >= 10)
+        {
+            carry = 1;
+            sum = sum % 10;
+        }
+        else
+        {
+            carry = 0;
+        }
+        
+        temp = (struct node*)malloc(sizeof(struct node));
+        temp->data = sum;
+        temp->next = NULL; //important that its set to NULL
+        if (result == NULL)
+        {
+            result = temp;
+        }
+        else
+        {
+            previous->next = temp;
+        }
+        previous = temp;
+        
+        if (first)
+        {
+            first = first->next;
+        }
+        if (second)
+        {
+            second = second->next;
+        }
+        
+    }
+    
+    if (carry >0)
+    {
+       NODE  carryNODE = (struct node*)malloc(sizeof(struct node));
+        carryNODE->data = carry;
+        carryNODE->next = NULL;
+        temp->next = carryNODE; //previous->next = carryNODE also works
+    }
+    
+    return result;
+}
+
 int main(int argc, const char * argv[])
 {
     
@@ -234,7 +307,9 @@ int main(int argc, const char * argv[])
         push(&a, 4);
         
         printf("Unsorted linked list: ");
+        printf("\n");
         printLinkList(a);
+        printf("\n");
         printf("\n Link list after removing duplicates \n");
         
         //       use one of the methods below to remove duplicates
@@ -244,11 +319,42 @@ int main(int argc, const char * argv[])
         
         
         removeDuplicatesFromUnsortedLinkedListUsingObjectiveCApi(a);
+        printLinkList(a);
+        printf("\n");
         getNthNode(a, 4);
+        printf("\n");
         mergeSort(&a);
-        
+        printf("\n Sorted linked list: ");
         printLinkList(a);
 
+        
+        struct node* res = NULL;
+        struct node* first = NULL;
+        struct node* second = NULL;
+        
+        // create first list 7->5->9->4->6
+        push(&first, 6);
+        push(&first, 4);
+        push(&first, 9);
+        push(&first, 5);
+        push(&first, 7);
+        printf("\n");
+        printf("\n First List is");
+        printLinkList(first);
+        
+        // create second list 8->4
+        push(&second, 4);
+        push(&second, 8);
+        push(&second, 4);
+        push(&second, 8);
+
+        printf("\n Second List is ");
+        printLinkList(second);
+        
+        // Add the two lists and see result
+        res = addNumbersFromLinkedList(first, second);
+        printf("\n Resultant list (after addition) is ");
+        printLinkList(res);
     }
     return 0;
 }
