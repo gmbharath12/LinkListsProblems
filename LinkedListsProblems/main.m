@@ -237,15 +237,14 @@ int main(int argc, const char * argv[])
         printLinkList(a);
         printf("\n Link list after removing duplicates \n");
         
-//       use one of the methods below to remove duplicates
-//       removeDuplicatesFromUnsortedLinkedList(a);
-//       removeDuplicatesFromUnsortedLinkedListUsingObjectiveCApi(a);
+        //       use one of the methods below to remove duplicates
+        //       removeDuplicatesFromUnsortedLinkedList(a);
         
-//        gets the second node from the end of a linked list.
-        
-//           getNthNode(a, 6);
+        //        gets the second node from the end of a linked list.
         
         
+        removeDuplicatesFromUnsortedLinkedListUsingObjectiveCApi(a);
+        getNthNode(a, 4);
         mergeSort(&a);
         
         printLinkList(a);
