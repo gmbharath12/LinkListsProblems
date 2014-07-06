@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+//represents NODE
 struct node
 {
     int data;
@@ -15,8 +16,7 @@ struct node
 };
 typedef struct node* NODE;
 
-//adds an item to the front of the linked list
-
+//adds a NODE to the front of a linked list
 void push(struct node*  *head, int new_data)
 {
     NODE new_node = (struct node*)malloc(sizeof(struct node));
@@ -32,7 +32,7 @@ void push(struct node*  *head, int new_data)
     }
 }
 
-//prints link list
+//prints linked list
 void printLinkList(struct node* head)
 {
     if (head == NULL)
@@ -83,7 +83,6 @@ void removeDuplicatesFromUnsortedLinkedList(struct node* head)
 
 
 //removes duplicates from UnsortedLinkedList using Objective C API
-
 void removeDuplicatesFromUnsortedLinkedListUsingObjectiveCApi(struct node* head)
 {
     NODE previous;
@@ -114,7 +113,7 @@ void removeDuplicatesFromUnsortedLinkedListUsingObjectiveCApi(struct node* head)
 }
 
 
-//gets nth node from the end of list
+//gets nth node from the end of a linked list
 void getNthNode(struct node* head, int n)
 {
     NODE p1, p2;
@@ -144,7 +143,10 @@ void getNthNode(struct node* head, int n)
     
 }
 
-//splits link list into two halves.
+//splits linked list into two halves.
+//If the length is odd, the extra node should go in the front list.
+//Uses the fast/slow pointer strategy
+
 void fronAndBackSplit(struct node* head, struct node** frontReference, struct node** backReference)
 {
     struct node* source = head;
